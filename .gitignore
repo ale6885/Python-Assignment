@@ -1,0 +1,7 @@
+__pycache__
+.vscode
+myenv
+envScriptsactivate.bat
+pip
+virtualenv
+.DS_Store
