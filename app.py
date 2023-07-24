@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -17,9 +18,11 @@ def about():
 def post():
     title = request.args.get('title')
     content = request.args.get('content')
+    date = request.args.get('date')
     new_post = {
         'title': title,
-        'content': content
+        'content': content,
+        'date': date
     }
     return render_template('post.html', new_post=new_post)
 
@@ -36,15 +39,17 @@ def new_post():
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
-        if title and content:
+        date = request.form['date']  # Get the date from the form
+        if title and content and date:
             post = {
                 'title': title,
-                'content': content
+                'content': content,
+                'date': date
             }
-            blog_posts.append(post)  # Add the post to the list
-             # Redirect to the /post route with the post data in the URL
-            return redirect('/post?title={}&content={}'.format(title, content))
-    return render_template('new_post.html')
+    blog_posts.append(post)  # Add the post to the list
+            # Redirect to the /post route to display the newly created post
+    return redirect('/post')
+    return render_template('new_post.html', today_date=date.today())
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -87,15 +87,60 @@ body {
     cursor: pointer;
 }
 
+/* CSS Styles for post date */
+.post-date {
+    color: #666;
+    margin-top: 5px;
+  }
+
 /* Grid styles */
 .row {
     display: flex;
     flex-wrap: wrap;
     margin: -10px;
     /* Adjust this margin to control the gap between grid items */
+    max-width: 1200px;
 }
 
 .col {
     flex: 1;
     padding: 10px;
 }
+
+@media (min-width: 768px) {
+    .header {
+      grid-row: 1;
+    }
+
+    .main-section {
+      grid-row: 2;
+    }
+
+    .footer {
+      grid-row: 3;
+    }
+
+    .section-title,
+    .paragraph {
+      grid-row: 2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .header {
+      grid-row: 1;
+    }
+
+    .main-section {
+      grid-row: 2;
+    }
+
+    .footer {
+      grid-row: 3;
+    }
+
+    .section-title,
+    .paragraph {
+      grid-row: 2;
+    }
+  }
